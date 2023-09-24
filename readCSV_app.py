@@ -10,7 +10,6 @@ import pandas as pd
 import pandasai
 from pandasai.llm.openai import OpenAI
 from pandasai import SmartDataframe
-import plotly
 import matplotlib
 matplotlib.use('TkAgg')
 import matplotlib.pyplot as plt
