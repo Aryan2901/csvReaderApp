@@ -1,4 +1,4 @@
-! pip install pandasai
+
 import os
 
 import streamlit as st
