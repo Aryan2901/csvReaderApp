@@ -1,4 +1,6 @@
 pandas==1.5.3
 streamlit
 pandasai
+matplotlib
+tkinter
 bs4
