@@ -42,6 +42,7 @@ def display_output(output):
         plt.tight_layout()
         st.pyplot(fig)
     else:
+        st.write(output)
 
 def main():
     OPENAI_API_KEY ="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"
