@@ -26,11 +26,22 @@ if "questionsHistory" not in st.session_state:
     st.session_state.questionsHistory = []
 def display_history():
     questions = st.session_state.get("questionsHistory", [])
-
-
     st.sidebar.subheader("History")
     for question in questions:
         st.sidebar.write(f"- {question}")
+def display_output(output):
+    """Displays the output from pandas-ai."""
+
+    if isinstance(output, str):
+        st.write(output)
+    elif isinstance(output, pd.DataFrame):
+        st.dataframe(output)
+    elif isinstance(output, matplotlib.figure.Figure):
+        # st.pyplot(output)
+        fig = plt.figure(figsize=(8, 6),)
+        plt.tight_layout()
+        st.pyplot(fig)
+    else:
 
 def main():
     OPENAI_API_KEY ="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"
@@ -55,11 +66,12 @@ def main():
             st.info("Your Query: "+ input_text)
             answer = ask_questions(pandas_ai, input_text)
             # result = chat_with_csv(data,input_text)
-            fig_number = plt.get_fignums()
-            if fig_number:
-                st.pyplot(plt.gcf())
-            else:
-                st.success(answer)
+            # fig_number = plt.get_fignums()
+            # if fig_number:
+            #     st.pyplot(plt.gcf())
+            # else:
+            #     st.success(answer)
+            display_output(answer)
 
     display_history()
 
