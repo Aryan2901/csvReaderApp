@@ -45,7 +45,7 @@ def display_output(output):
         st.write(output)
 
 def main():
-    OPENAI_API_KEY ="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"
+    
     llm = OpenAI(api_key=OPENAI_API_KEY, model="gpt-3.5-turbo-16k")
     input_csvs = st.file_uploader("Upload your CSV files", type=['csv'], accept_multiple_files=True)
     if input_csvs:
