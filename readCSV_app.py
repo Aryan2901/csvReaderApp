@@ -4,7 +4,7 @@ import os
 import streamlit as st
 # Add your own openai api key intstead of st.secrets . 
 os.environ["OPENAI_API_KEY"] = st.secrets["api_key"]
-
+OPENAI_API_KEY = st.secrets["api_key"]
 
 import pandas as pd
 import pandasai
