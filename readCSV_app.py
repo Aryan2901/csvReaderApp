@@ -14,7 +14,26 @@ import matplotlib
 matplotlib.use('TkAgg')
 import matplotlib.pyplot as plt
 
+def display_output(output):
+    # Displays the output from pandas-ai.
 
+    if isinstance(output, str):
+        st.write(output)
+    elif isinstance(output, pd.DataFrame):
+        st.dataframe(output)
+    # elif isinstance(output, matplotlib.figure.Figure):
+    #     # st.pyplot(output)
+    #     image_path = os.path.join(os.getcwd(), "exports", "charts", "temp_chart.png")
+    #     if os.path.exists(image_path):
+    #         fig = plt.imread(image_path)
+    #         st.image(fig)
+    else:
+        image_path = os.path.join(os.getcwd(), "exports", "charts", "temp_chart.png")
+        if os.path.exists(image_path):
+            fig = plt.imread(image_path)
+            st.image(fig)
+        st.write(output)
+        
 def ask_questions(pandas_ai, question):
     """Asks the user a question and returns the answer."""
 
@@ -62,17 +81,18 @@ def main():
         # questionsHistory.append(input_text)
         if input_text:
             st.session_state.questionsHistory.append(input_text)
-        #Perform analysis
-        if input_text:
-            st.info("Your Query: "+ input_text)
-            answer = ask_questions(pandas_ai, input_text)
-            # result = chat_with_csv(data,input_text)
-            # fig_number = plt.get_fignums()
-            # if fig_number:
-            #     st.pyplot(plt.gcf())
-            # else:
-            #     st.success(answer)
             display_output(answer)
+        # #Perform analysis
+        # if input_text:
+        #     st.info("Your Query: "+ input_text)
+        #     answer = ask_questions(pandas_ai, input_text)
+        #     # result = chat_with_csv(data,input_text)
+        #     # fig_number = plt.get_fignums()
+        #     # if fig_number:
+        #     #     st.pyplot(plt.gcf())
+        #     # else:
+        #     #     st.success(answer)
+        #     display_output(answer)
 
     display_history()
 
