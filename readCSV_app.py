@@ -81,6 +81,8 @@ def main():
         # questionsHistory.append(input_text)
         if input_text:
             st.session_state.questionsHistory.append(input_text)
+            st.info("Your Query: "+ input_text)
+            answer = ask_questions(pandas_ai, input_text)
             display_output(answer)
         # #Perform analysis
         # if input_text:
